@@ -46,6 +46,7 @@ public class Vendas {
     @Column(name =  "contato_cliente")
     private Long contatoCliente;
 
+
     /*
 
     ****Implementar para atualização de melhoria ******

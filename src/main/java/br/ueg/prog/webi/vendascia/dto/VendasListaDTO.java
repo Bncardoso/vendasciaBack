@@ -8,7 +8,7 @@ public @Data class VendasListaDTO {
     private Long id;
     private LocalDate dataEncomenda;
     private String nomeProduto;
-    private String qtdVenda;
+    private Integer qtdVenda;
     private Double valorUnidade;
     private Double valorTotal;
     private String nomeCliente;

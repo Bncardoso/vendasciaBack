@@ -8,7 +8,7 @@
  */
 package br.ueg.prog.webi.vendascia.configuration;
 
-import br.ueg.prog.webi.config.config.ApiWebConfig;
+import br.ueg.prog.webi.api.config.ApiWebConfig;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor;
 import org.springframework.web.filter.CorsFilter;

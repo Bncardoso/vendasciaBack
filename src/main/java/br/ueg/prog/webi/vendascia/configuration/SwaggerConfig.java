@@ -10,7 +10,7 @@ package br.ueg.prog.webi.vendascia.configuration;
 
 //import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import br.ueg.prog.webi.config.config.ApiSwaggerConfig;
+import br.ueg.prog.webi.api.config.ApiSwaggerConfig;
 import org.springframework.context.annotation.Configuration;
 
 /**

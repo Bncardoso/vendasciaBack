@@ -1,4 +1,4 @@
-package br.ueg.prog.webi.config.config;/*
+package br.ueg.prog.webi.api.config;/*
  * SecurityConfig.java
  * Copyright (c) UEG.
  *

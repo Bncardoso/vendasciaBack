@@ -27,12 +27,12 @@ public class VendasRepositoryImpl implements VendasRepositoryCustom {
         jpql.append(" WHERE 1=1 ");
 
         if (Strings.isNotEmpty(vendas.getNomeCliente())) {
-            jpql.append(" AND UPPER(vendas.nome) LIKE UPPER('%' || :nome || '%')  ");
-            parametros.put("nome", vendas.getNomeCliente());
+            jpql.append(" AND UPPER(vendas.nomeCliente) LIKE UPPER('%' || :nomeCliente || '%')  ");
+            parametros.put("nomeCliente", vendas.getNomeCliente());
         }
         if (Strings.isNotEmpty(vendas.getNomeProduto())) {
-            jpql.append(" AND UPPER(vendas.produto) LIKE UPPER('%' || :produto || '%')  ");
-            parametros.put("apelido", vendas.getNomeProduto());
+            jpql.append(" AND UPPER(vendas.nomeProduto) LIKE UPPER('%' || :nomeProduto || '%')  ");
+            parametros.put("nomeProduto", vendas.getNomeProduto());
         }
 
         TypedQuery<Vendas> query = entityManager.createQuery(jpql.toString(), Vendas.class);

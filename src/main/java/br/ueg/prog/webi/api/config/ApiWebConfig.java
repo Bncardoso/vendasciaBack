@@ -6,7 +6,7 @@
  *
  *
  */
-package br.ueg.prog.webi.config.config;
+package br.ueg.prog.webi.api.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;

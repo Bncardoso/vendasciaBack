@@ -6,7 +6,7 @@
  *
  *
  */
-package br.ueg.prog.webi.config.config;
+package br.ueg.prog.webi.api.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;

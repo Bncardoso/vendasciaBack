@@ -11,6 +11,7 @@ public @Data class VendasDTO {
     private String nomeProduto;
     private Integer qtdVenda;
     private Double valorUnidade;
+    private Double valorTotal;
     private String nomeCliente;
     private Long contatoCliente;
 }
