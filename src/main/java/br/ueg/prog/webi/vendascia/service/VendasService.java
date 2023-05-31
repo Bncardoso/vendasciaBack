@@ -15,6 +15,5 @@ public interface VendasService {
     public Vendas obterVendasPeloId(Long id);
 
     public List<Vendas> listarTodos();
-    public List<Vendas> localizar(Vendas vendas);
-
+    public List<Vendas> localizarPorNomeCliente(String nomeCliente); // melhorar isso
 }

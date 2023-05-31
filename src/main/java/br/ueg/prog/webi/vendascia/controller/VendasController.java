@@ -28,36 +28,24 @@ public class VendasController {
     @Autowired
     private VendasService vendasService;
 
-    @GetMapping(path = "/listar")
-    @Operation(description = "Lista de Vendas", responses = {
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "Listagem de vendas",
-                    content = @Content(
-                            mediaType = "application/json",
-                            array = @ArraySchema(
-                                    schema = @Schema(implementation = VendasListaDTO.class)))
-            )
-    })
-    public ResponseEntity<List<VendasListaDTO>> listALL() {
+    @GetMapping()
+    @Operation(description = "Lista de Vendas")
+    public List<VendasListaDTO> listAll() {
         List<Vendas> vendas = vendasService.listarTodos();
-        return ResponseEntity.ok(vendasMapper.toDTO(vendas));
+        return vendasMapper.toDTO(vendas);
     }
 
     @PostMapping
-    @Operation(description = "Método utilizado para realizar inclusão de vendas", responses = {@ApiResponse(responseCode = "200", description = "Venda Incluída",
-            content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = VendasDTO.class)))})
+    @Operation(description = "Método utilizado para realizar inclusão de vendas")
+    public VendasDTO incluir(@RequestBody VendasDadosAlteravelDTO venda) {
+        //preparando entrada
+        Vendas vendasIncluir = this.vendasMapper.toModelo(venda);
 
-    public VendasDTO incluir(@RequestBody VendasDadosAlteravelDTO vendas) {
-        //preparação para entrada.
-        Vendas vendasIncluir = this.vendasMapper.toModelo(vendas);
-
-        //chamada do serviço
+        // chamada de serviço
         System.out.println(vendasIncluir);
         vendasIncluir = this.vendasService.incluir(vendasIncluir);
 
-        //preparação par ao retorno
+        // prepando retorno
         VendasDTO retorno = this.vendasMapper.toVendasDTO(vendasIncluir);
         return retorno;
     }
@@ -78,20 +66,16 @@ public class VendasController {
     }
 
     @GetMapping(path = "/{id}")
-    @Operation(description = "Obter os dados completos de uma venda pelo ID informado!")
+    @Operation(description = "Obter venda pelo ID informado!")
     public VendasDTO ObterPorId(@PathVariable(name = "id") Long id) {
         Vendas vendas = this.vendasService.obterVendasPeloId(id);
         return this.vendasMapper.toVendasDTO(vendas);
     }
-
-    @PostMapping(path = "/pesquisar")
-    @Operation(description = "Busca uma venda pelos dados informados")
-    public List<VendasListaDTO> pesquisar(
-            @RequestBody VendasDTO vendas
-    ) {
-        Vendas vendasBusca = this.vendasMapper.toModelo(vendas);
-        List<Vendas> localizar = vendasService.localizar(vendasBusca);
-        return this.vendasMapper.toDTO(localizar);
+    @GetMapping(path = "/cliente/{nomeCliente}")
+    @Operation(description = "Busca vendas pelo nome do cliente informado")
+    public List<VendasListaDTO> pesquisarPorNomeCliente(@PathVariable(name = "nomeCliente") String nomeCliente) {
+        List<Vendas> vendasEncontradas = vendasService.localizarPorNomeCliente(nomeCliente);
+        return vendasMapper.toDTO(vendasEncontradas);
     }
-}
 
+}

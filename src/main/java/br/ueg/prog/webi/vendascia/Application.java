@@ -22,7 +22,7 @@ public class Application {
 			return args -> {
 				System.out.println("Executado");
 				System.out.println(vendasRepository);
-				Vendas v1 = new Vendas();
+				/*Vendas v1 = new Vendas();
 				v1.setNomeProduto("Pano de Prato 60x30");
 				v1.setQtdVenda(2);
 				v1.setValorUnidade(39.99);
@@ -37,11 +37,11 @@ public class Application {
 
 				v1.setId(1L);
 				v1 = vendasRepository.save(v1);
-				System.out.println("Venda: " + v1);
+				System.out.println("Venda: " + v1);*/
 
+/*
 
-				System.out.println("Aluno2: "+ v1);
-				imprimirLista(vendasRepository);
+				imprimirLista(vendasRepository);*/
 //				vendasRepository.delete(v1);
 			};
 		}

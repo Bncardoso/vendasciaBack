@@ -1,5 +1,8 @@
 package br.ueg.prog.webi.vendascia.utils;
 
+import br.ueg.prog.webi.vendascia.dto.VendasDTO;
+import br.ueg.prog.webi.vendascia.model.enums.StatusEncomenda;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,4 +20,5 @@ public class ValidacoesComum {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
+
 }

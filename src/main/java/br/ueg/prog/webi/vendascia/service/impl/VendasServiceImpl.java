@@ -1,7 +1,9 @@
 package br.ueg.prog.webi.vendascia.service.impl;
 
 
+import br.ueg.prog.webi.vendascia.dto.VendasDTO;
 import br.ueg.prog.webi.vendascia.model.Vendas;
+import br.ueg.prog.webi.vendascia.model.enums.StatusEncomenda;
 import br.ueg.prog.webi.vendascia.repository.VendasRepository;
 import br.ueg.prog.webi.vendascia.service.VendasService;
 import org.apache.logging.log4j.util.Strings;
@@ -12,6 +14,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class VendasServiceImpl implements VendasService {
@@ -22,6 +25,9 @@ public class VendasServiceImpl implements VendasService {
     public Vendas incluir(Vendas vendas) {
         this.validarCamposObrigatorios(vendas);
         this.validarDados(vendas);
+        vendas.setTotal(vendas.getQtdVenda(), vendas.getValorUnidade());
+        vendas.setDataEncomenda(LocalDate.now());
+        vendas.setStatusEncomenda(StatusEncomenda.PENDENTE);
         Vendas vendaIncluida = this.gravarDados(vendas);
         return vendaIncluida;
     }
@@ -68,7 +74,15 @@ public class VendasServiceImpl implements VendasService {
         Vendas vendasBD = recuperarVendasOuGeraErro(id);
         vendas.setId(id);
         this.validarDados(vendas);
-        // vendas.setDataEncomenda(LocalDate.now());
+        vendas.setTotal(vendas.getQtdVenda(), vendas.getValorUnidade());
+        vendas.setDataEncomenda(LocalDate.now());
+        if ("FINALIZADO".equals(vendas.getStatusEncomenda())) {
+            vendas.setStatusEncomenda(StatusEncomenda.FINALIZADO);
+        } else if ("ENTREGUE".equals(vendas.getStatusEncomenda())) {
+            vendas.setStatusEncomenda(StatusEncomenda.ENTREGUE);
+        } else if ("PENDENTE".equals(vendas.getStatusEncomenda())) {
+            vendas.setStatusEncomenda(StatusEncomenda.PENDENTE);
+        }
         Vendas save = vendasRepository.save(vendas);
         return save;
     }
@@ -100,7 +114,10 @@ public class VendasServiceImpl implements VendasService {
     }
 
     @Override
-    public List<Vendas> localizar(Vendas vendas) {
-        return this.vendasRepository.localizarPorVendas(vendas);
+    public List<Vendas> localizarPorNomeCliente(String nomeCliente) {
+        return listarTodos()
+                .stream()
+                .filter(venda -> venda.getNomeCliente().equals(nomeCliente))
+                .collect(Collectors.toList());
     }
 }
