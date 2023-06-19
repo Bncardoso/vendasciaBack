@@ -11,8 +11,8 @@
 	<groupId>br.ueg</groupId>
 	<artifactId>prog.webi.faculdade</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>prog.webi.faculdade</name>
-	<description>Sistema de Faculdade Simples</description>
+	<name>vendasciaBack</name>
+	<description>Sistema de Gerenciamento de Vendas</description>
 	<properties>
 		<java.version>17</java.version>
 		<lombok.version>1.18.26</lombok.version>

@@ -1,11 +1,4 @@
-/*
- * SwaggerConfig.java
- * Copyright (c) UEG.
- *
- *
- *
- *
- */
+
 package br.ueg.prog.webi.vendascia.configuration;
 
 //import springfox.documentation.swagger2.annotations.EnableSwagger2;

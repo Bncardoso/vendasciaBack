@@ -13,7 +13,6 @@ import java.util.List;
 
 @SpringBootApplication
 @EntityScan(basePackageClasses = { Jsr310JpaConverters.class}, basePackages = "br.ueg.prog.webi.vendascia.*")
-
 public class Application {
 
 	public static void main(String[] args) { SpringApplication.run(Application.class, args);}
@@ -21,7 +20,7 @@ public class Application {
 		public CommandLineRunner commandLineRunner (VendasRepository vendasRepository){
 			return args -> {
 				System.out.println("Executado");
-				System.out.println(vendasRepository);
+				//System.out.println(vendasRepository);
 				/*Vendas v1 = new Vendas();
 				v1.setNomeProduto("Pano de Prato 60x30");
 				v1.setQtdVenda(2);
