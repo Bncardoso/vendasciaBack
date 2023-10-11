@@ -51,8 +51,8 @@ public class VendasController {
     }
 
     @PostMapping
-    @Operation(description = "Método utilizado para realizar inclusão de vendas", responses = {
-            @ApiResponse(responseCode = "200", description = "Venda inclusa",
+    @Operation(description = "Método utilizado para realizar inclusão de clientes", responses = {
+            @ApiResponse(responseCode = "200", description = "Cliente incluso",
                     content = @Content( mediaType = "application/json",
                             array = @ArraySchema( schema = @Schema(implementation = VendasDTO.class)))),
             @ApiResponse(responseCode = "404", description = "Registro não encontrado",

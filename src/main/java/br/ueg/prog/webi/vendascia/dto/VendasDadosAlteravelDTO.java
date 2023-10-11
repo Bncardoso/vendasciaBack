@@ -10,5 +10,4 @@ public @Data class VendasDadosAlteravelDTO {
     private String nomeCliente;
     private Long contatoCliente;
     private StatusEncomenda statusEncomenda;
-
 }
